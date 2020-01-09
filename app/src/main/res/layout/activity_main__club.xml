@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Title"
         app:srcCompat="@color/colorPrimary" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/club1"
         android:layout_width="100dp"
         android:layout_height="100dp"
