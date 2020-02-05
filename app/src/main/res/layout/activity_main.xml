@@ -31,7 +31,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/gachon_logo" />
+        app:srcCompat="@drawable/gachon_logo"
+        tools:srcCompat="@drawable/gachon_logo" />
 
     <Button
         android:id="@+id/Main_club"

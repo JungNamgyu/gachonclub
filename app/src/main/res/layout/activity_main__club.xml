@@ -11,89 +11,27 @@
         android:id="@+id/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="24dp"
         android:text="동아리"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/SubView"
-        android:layout_width="350dp"
-        android:layout_height="600dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="60dp"
-        android:background="#79ADCC"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Title" />
-
-    <ImageButton
-        android:id="@+id/club1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:background="#03A9F4"
-        app:layout_constraintStart_toStartOf="@+id/SubView"
-        app:layout_constraintTop_toTopOf="@+id/SubView"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageButton
-        android:id="@+id/club2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:background="#03A9F4"
-        app:layout_constraintEnd_toEndOf="@+id/SubView"
-        app:layout_constraintTop_toTopOf="@+id/SubView"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageButton
-        android:id="@+id/club3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
-        android:background="#03A9F4"
-        app:layout_constraintStart_toStartOf="@+id/SubView"
-        app:layout_constraintTop_toBottomOf="@+id/club1"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageButton
-        android:id="@+id/club4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="50dp"
-        android:background="#03A9F4"
-        app:layout_constraintEnd_toEndOf="@+id/SubView"
-        app:layout_constraintTop_toBottomOf="@+id/club2"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageButton
-        android:id="@+id/club5"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
-        android:background="#03A9F4"
-        app:layout_constraintStart_toStartOf="@+id/SubView"
-        app:layout_constraintTop_toBottomOf="@+id/club3"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageButton
-        android:id="@+id/club6"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="50dp"
-        android:background="#03A9F4"
-        app:layout_constraintEnd_toEndOf="@+id/SubView"
-        app:layout_constraintTop_toBottomOf="@+id/club4"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/Title"
+        app:layout_constraintVertical_bias="0.49"></LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

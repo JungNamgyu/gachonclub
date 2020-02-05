@@ -14,13 +14,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Main_club.setOnClickListener{
-            Title.text = "중앙 동아리"
-            startActivity<Main_Club>()
+            startActivity<Main_Club>(
+                "Title" to "중앙동아리"
+            )
         }
         sub_club.setOnClickListener{
-            Title.text = "과 동아리"
-            startActivity<Main_Club>()
+            startActivity<Main_Club>(
+                "Title" to "과동아리"
+            )
         }
         Sign_in.setOnClickListener{ startActivity<LoginActivity>() }
+
+        Sign_Up.setOnClickListener{ startActivity<New_Account>() }
+
     }
 }
