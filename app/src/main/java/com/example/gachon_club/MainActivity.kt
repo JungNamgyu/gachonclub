@@ -18,14 +18,24 @@ class MainActivity : AppCompatActivity() {
                 "Title" to "중앙동아리"
             )
         }
+
         sub_club.setOnClickListener{
             startActivity<Main_Club>(
                 "Title" to "과동아리"
             )
         }
+
+        Notice.setOnClickListener{
+            startActivity<Main_Notice>(
+                "Title" to "공지사항"
+            )
+        }
+
+        Information.setOnClickListener{ startActivity<Account>() }
+
         Sign_in.setOnClickListener{ startActivity<LoginActivity>() }
 
-        Sign_Up.setOnClickListener{ startActivity<New_Account>() }
+        Sign_Up.setOnClickListener{ startActivity<Signup>() }
 
     }
 }
