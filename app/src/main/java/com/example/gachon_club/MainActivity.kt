@@ -2,6 +2,7 @@ package com.example.gachon_club
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.gachon_club.Club.ClubActivity
 import com.example.gachon_club.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
@@ -14,15 +15,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Main_club.setOnClickListener{
-            startActivity<Main_Club>(
-                "Title" to "중앙동아리"
-            )
+            startActivity<ClubActivity>()
         }
 
         sub_club.setOnClickListener{
-            startActivity<Main_Club>(
-                "Title" to "과동아리"
-            )
+            startActivity<ClubActivity>()
         }
 
         Notice.setOnClickListener{

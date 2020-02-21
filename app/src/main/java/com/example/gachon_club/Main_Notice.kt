@@ -8,12 +8,9 @@ import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
 import androidx.appcompat.app.AppCompatActivity
-import com.example.gachon_club.ui.login.LoginActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.Title
-import kotlinx.android.synthetic.main.activity_main__club.*
+import kotlinx.android.synthetic.main.activity_main__notice.*
 import org.jetbrains.anko.backgroundColor
-import org.jetbrains.anko.startActivity
 
 class Main_Notice : AppCompatActivity() {
 
