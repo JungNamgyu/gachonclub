@@ -9,12 +9,14 @@ import com.example.gachon_club.Club.Model.Club
 import com.example.gachon_club.Club.Network.ServiceControl
 import com.example.gachon_club.R
 import kotlinx.android.synthetic.main.activity_club.*
+import org.jetbrains.anko.startActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class ClubActivity : AppCompatActivity() {
+class ClubActivity : AppCompatActivity(){
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +26,11 @@ class ClubActivity : AppCompatActivity() {
     }
 
     private fun setAdapter(clubList: ArrayList<Club>){
-        val mAdapter = RecyclerAdapter(clubList,this)
+        val mAdapter = RecyclerAdapter(clubList,this) { club ->
+            startActivity<ClubInfoActivity>(
+                "id" to club._id
+            )
+        }
         recyler_view.adapter = mAdapter
         recyler_view.layoutManager = LinearLayoutManager(this)
     }
