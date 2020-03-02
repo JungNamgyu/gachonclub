@@ -30,7 +30,6 @@ class RecyclerAdapter(var clubList: ArrayList<Club>, var context: Context, var i
 
     inner class ViewHolder (itemView: View?, itemClick: (Club) -> Unit) : RecyclerView.ViewHolder(itemView!!){
 
-        val logo = itemView?.findViewById<ImageView>(R.id.image_logo)
         val title = itemView?.findViewById<TextView>(R.id.text_Title)
         val info = itemView?.findViewById<TextView>(R.id.text_info)
 
