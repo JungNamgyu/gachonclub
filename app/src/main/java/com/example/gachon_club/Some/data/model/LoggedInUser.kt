@@ -1,4 +1,4 @@
-package com.example.gachon_club.data.model
+package com.example.gachon_club.Some.data.model
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

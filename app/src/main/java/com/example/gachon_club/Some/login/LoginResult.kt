@@ -1,4 +1,4 @@
-package com.example.gachon_club.ui.login
+package com.example.gachon_club.Some.login
 
 /**
  * Authentication result : success (user details) or error message.

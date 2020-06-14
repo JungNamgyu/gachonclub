@@ -1,6 +1,6 @@
-package com.example.gachon_club.data
+package com.example.gachon_club.Some.data
 
-import com.example.gachon_club.data.model.LoggedInUser
+import com.example.gachon_club.Some.data.model.LoggedInUser
 import java.io.IOException
 
 /**

@@ -1,4 +1,4 @@
-package com.example.gachon_club.ui.login
+package com.example.gachon_club.Some.login
 
 /**
  * Data validation state of the login form.

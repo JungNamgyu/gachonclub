@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import com.bumptech.glide.Glide
 import com.example.gachon_club.Club.Model.Club
-import com.example.gachon_club.Club.Network.ServiceControl
+import com.example.gachon_club.Network.ServiceControl
 import com.example.gachon_club.R
 import kotlinx.android.synthetic.main.activity_club_info.*
 import retrofit2.Call

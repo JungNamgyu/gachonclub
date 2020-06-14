@@ -1,4 +1,4 @@
-package com.example.gachon_club.ui.login
+package com.example.gachon_club.Some.login
 
 /**
  * User details post authentication that is exposed to the UI

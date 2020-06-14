@@ -11,13 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Club.ClubInfoActivity"></activity>
+        <activity android:name=".Account.SignInActivity"></activity>
+        <activity android:name=".Club.ClubInfoActivity" />
         <activity android:name=".Club.ClubActivity" />
-        <activity android:name=".Signup" />
+        <activity android:name=".Some.Signup" />
         <activity android:name=".Account" />
-        <activity android:name=".Main_Notice" />
+        <activity android:name=".Some.Main_Notice" />
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name=".Some.login.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".MainActivity">
             <intent-filter>

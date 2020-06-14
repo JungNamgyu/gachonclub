@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gachon_club.Club.Adapter.RecyclerAdapter
 import com.example.gachon_club.Club.Model.Club
-import com.example.gachon_club.Club.Network.ServiceControl
+import com.example.gachon_club.Network.ServiceControl
 import com.example.gachon_club.R
 import kotlinx.android.synthetic.main.activity_club.*
 import org.jetbrains.anko.startActivity

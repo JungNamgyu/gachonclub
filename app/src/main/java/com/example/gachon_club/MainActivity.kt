@@ -2,8 +2,11 @@ package com.example.gachon_club
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.gachon_club.Account.SignInActivity
 import com.example.gachon_club.Club.ClubActivity
-import com.example.gachon_club.ui.login.LoginActivity
+import com.example.gachon_club.Some.Main_Notice
+import com.example.gachon_club.Some.Signup
+import com.example.gachon_club.Some.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
@@ -18,21 +21,14 @@ class MainActivity : AppCompatActivity() {
             startActivity<ClubActivity>()
         }
 
-        sub_club.setOnClickListener{
-            startActivity<ClubActivity>()
-        }
-
         Notice.setOnClickListener{
             startActivity<Main_Notice>(
                 "Title" to "공지사항"
             )
         }
 
-        Information.setOnClickListener{ startActivity<Account>() }
-
-        Sign_in.setOnClickListener{ startActivity<LoginActivity>() }
-
-        Sign_Up.setOnClickListener{ startActivity<Signup>() }
-
+        Sign_in.setOnClickListener{
+            startActivity<SignInActivity>()
+        }
     }
 }

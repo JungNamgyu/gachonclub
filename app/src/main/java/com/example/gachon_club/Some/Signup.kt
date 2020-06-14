@@ -1,7 +1,8 @@
-package com.example.gachon_club
+package com.example.gachon_club.Some
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.gachon_club.R
 
 class Signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

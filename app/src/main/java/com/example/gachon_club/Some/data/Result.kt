@@ -1,4 +1,4 @@
-package com.example.gachon_club.data
+package com.example.gachon_club.Some.data
 
 /**
  * A generic class that holds a value with its loading status.

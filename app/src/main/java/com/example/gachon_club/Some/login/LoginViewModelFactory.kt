@@ -1,9 +1,9 @@
-package com.example.gachon_club.ui.login
+package com.example.gachon_club.Some.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.gachon_club.data.LoginDataSource
-import com.example.gachon_club.data.LoginRepository
+import com.example.gachon_club.Some.data.LoginDataSource
+import com.example.gachon_club.Some.data.LoginRepository
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

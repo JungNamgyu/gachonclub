@@ -1,12 +1,12 @@
-package com.example.gachon_club.ui.login
+package com.example.gachon_club.Some.login
 
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.gachon_club.R
-import com.example.gachon_club.data.LoginRepository
-import com.example.gachon_club.data.Result
+import com.example.gachon_club.Some.data.LoginRepository
+import com.example.gachon_club.Some.data.Result
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 

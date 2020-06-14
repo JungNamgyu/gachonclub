@@ -1,4 +1,4 @@
-package com.example.gachon_club
+package com.example.gachon_club.Some
 
 import android.graphics.Color
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
 import androidx.appcompat.app.AppCompatActivity
+import com.example.gachon_club.R
 import kotlinx.android.synthetic.main.activity_main.Title
 import kotlinx.android.synthetic.main.activity_main__notice.*
 import org.jetbrains.anko.backgroundColor
