@@ -16,7 +16,7 @@ class RecyclerAdapter(var clubList: ArrayList<Club>, var context: Context, var i
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(context)
-            .inflate(R.layout.list_club_view,parent ,false), itemClick)
+                .inflate(R.layout.list_club_view,parent ,false), itemClick)
     }
 
     override fun getItemCount(): Int {

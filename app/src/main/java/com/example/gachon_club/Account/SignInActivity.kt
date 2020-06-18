@@ -1,11 +1,15 @@
 package com.example.gachon_club.Account
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import com.example.gachon_club.Account.Model.User
 import com.example.gachon_club.R
 import com.example.gachon_club.Network.ServiceControl
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,6 +20,10 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+
+        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         btn_login.setOnClickListener{
 
@@ -39,7 +47,10 @@ class SignInActivity : AppCompatActivity() {
                     body?.let {
                         if(it.userPw.toString() == PW){
                             Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_LONG).show()
-                            Toast.makeText(applicationContext, "니 이름 : " + it.name.toString(), Toast.LENGTH_LONG).show()
+                            val intent = Intent()
+                            intent.putExtra("userInfo", it)
+                            setResult(Activity.RESULT_OK, intent)
+                            finish()
                         }
                         else{
                             Toast.makeText(applicationContext, "로그인 실패", Toast.LENGTH_LONG).show()
@@ -48,7 +59,7 @@ class SignInActivity : AppCompatActivity() {
                 }
             }
             override fun onFailure(call: Call<User>, t: Throwable) {
-                Toast.makeText(applicationContext, "연결 실패", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "로그인 실패", Toast.LENGTH_LONG).show()
             }
         })
     }
