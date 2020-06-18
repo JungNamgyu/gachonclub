@@ -41,7 +41,6 @@ class SignUpActivity : AppCompatActivity() {
                     edit_major.text.toString(),
                     edit_club.text.toString(),
                     edit_position.text.toString())
-
                 addData(user)
             } else {
                 Toast.makeText(this, "빠짐없이 입력해주세요", Toast.LENGTH_LONG).show()
