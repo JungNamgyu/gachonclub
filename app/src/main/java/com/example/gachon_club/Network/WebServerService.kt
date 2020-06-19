@@ -1,6 +1,7 @@
 package com.example.gachon_club.Network
 
 import com.example.gachon_club.Account.Model.User
+import com.example.gachon_club.Club.Model.Board
 import com.example.gachon_club.Club.Model.Club
 import retrofit2.Call
 import retrofit2.http.Body
@@ -32,4 +33,17 @@ interface WebServerService {
     // Club
     @GET("club/get/{id}")
     fun getClub(@Path("id") id: Long): Call<Club>
+
+    ///////////////////////////////////////////////////////////////////
+    // All Board
+    @GET("board/getAll")
+    fun getAllBoards(): Call<List<Board>>
+
+    // Board
+    @GET("board/get/{id}")
+    fun getBoard(@Path("id") id: Long): Call<Board>
+
+    // Board Create
+    @POST("board/add")
+    fun addBoard(@Body body:Board): Call<Board>
 }

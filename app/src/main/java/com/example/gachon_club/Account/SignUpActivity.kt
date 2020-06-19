@@ -54,6 +54,7 @@ class SignUpActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val body = response.body()
                     Toast.makeText(applicationContext, "회원가입 성공", Toast.LENGTH_LONG).show()
+                    finish()
                 }
             }
             override fun onFailure(call: Call<User>, t: Throwable) {
