@@ -4,10 +4,7 @@ import com.example.gachon_club.Account.Model.User
 import com.example.gachon_club.Club.Model.Board
 import com.example.gachon_club.Club.Model.Club
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 
 interface WebServerService {
@@ -24,6 +21,14 @@ interface WebServerService {
     // User Signup
     @POST("user/add")
     fun addUser(@Body body:User): Call<User>
+
+    // User Modified
+    @PUT("user/edit")
+    fun modifyUser(@Body body:User): Call<User>
+
+    // User Delete
+    @DELETE("user/delete/{id}")
+    fun deleteUser(@Path("id")id: String): Call<Boolean>
 
     ///////////////////////////////////////////////////////////////////
     // All Club
