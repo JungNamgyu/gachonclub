@@ -1,9 +1,8 @@
 package com.example.gachon_club.Account
 
-import android.app.Activity
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.example.gachon_club.Account.Model.User
@@ -16,6 +15,8 @@ import retrofit2.Response
 
 class SignUpActivity : AppCompatActivity() {
 
+    var list_of_items = arrayOf("정남규", "박건호", "동아리 회장", "동아리 부회장", "쫄따구")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
@@ -24,6 +25,8 @@ class SignUpActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
+        edit_position.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list_of_items)
+
         btn_signup.setOnClickListener{
 
             val ID = edit_username.text.toString()
@@ -31,7 +34,7 @@ class SignUpActivity : AppCompatActivity() {
             val NAME = edit_name.text.toString()
             val MAJOR = edit_major.text.toString()
             val CLUB = edit_club.text.toString()
-            val POSITION = edit_position.text.toString()
+            val POSITION = edit_position.selectedItem.toString()
 
             if((!ID.isNullOrBlank()) && (!PW.isNullOrBlank()) && (!NAME.isNullOrBlank()) && (!MAJOR.isNullOrBlank()) && (!CLUB.isNullOrBlank()) && (!POSITION.isNullOrBlank())) {
                 val user = User(
@@ -40,7 +43,7 @@ class SignUpActivity : AppCompatActivity() {
                     edit_name.text.toString(),
                     edit_major.text.toString(),
                     edit_club.text.toString(),
-                    edit_position.text.toString())
+                    edit_position.selectedItem.toString())
                 addData(user)
             } else {
                 Toast.makeText(this, "빠짐없이 입력해주세요", Toast.LENGTH_LONG).show()

@@ -37,19 +37,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
-        val drawer: DrawerLayout = findViewById(R.id.drawer_layout)
-        val toggle: ActionBarDrawerToggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer.setDrawerListener(toggle)
-        toggle.syncState()
-
         val navigationView: NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
         Main_club.setOnClickListener{
             startActivity<ClubActivity>()
+        }
+
+        Information.setOnClickListener{
+            drawer_layout.openDrawer(GravityCompat.START)
         }
 
         Sign_in.setOnClickListener{

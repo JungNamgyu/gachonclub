@@ -4,14 +4,14 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.example.gachon_club.Account.Model.User
 import com.example.gachon_club.Network.ServiceControl
 import com.example.gachon_club.R
 import kotlinx.android.synthetic.main.activity_modified.*
-import kotlinx.android.synthetic.main.activity_sign_up.*
-import kotlinx.android.synthetic.main.activity_sign_up.btn_signup
 import kotlinx.android.synthetic.main.activity_sign_up.edit_club
 import kotlinx.android.synthetic.main.activity_sign_up.edit_major
 import kotlinx.android.synthetic.main.activity_sign_up.edit_name
@@ -24,9 +24,13 @@ import retrofit2.Response
 
 class ModifiedActivity : AppCompatActivity() {
 
+    var list_of_items = arrayOf("정남규", "박건호", "동아리 회장", "동아리 부회장", "쫄따구")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modified)
+
+        edit_position.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list_of_items)
 
         val user:User = intent.getParcelableExtra<User>("userInfo")
         edit_username.setText(user.userId)
@@ -34,7 +38,7 @@ class ModifiedActivity : AppCompatActivity() {
         edit_name.setText(user.name)
         edit_major.setText(user.major)
         edit_club.setText(user.club)
-        edit_position.setText(user.position)
+        edit_position.setSelection(getIndex(edit_position, user.position))
 
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
@@ -47,7 +51,7 @@ class ModifiedActivity : AppCompatActivity() {
             val NAME = edit_name.text.toString()
             val MAJOR = edit_major.text.toString()
             val CLUB = edit_club.text.toString()
-            val POSITION = edit_position.text.toString()
+            val POSITION = edit_position.selectedItem.toString()
 
             if((!ID.isNullOrBlank()) && (!PW.isNullOrBlank()) && (!NAME.isNullOrBlank()) && (!MAJOR.isNullOrBlank()) && (!CLUB.isNullOrBlank()) && (!POSITION.isNullOrBlank())) {
                 val user = User(
@@ -56,12 +60,20 @@ class ModifiedActivity : AppCompatActivity() {
                     edit_name.text.toString(),
                     edit_major.text.toString(),
                     edit_club.text.toString(),
-                    edit_position.text.toString())
+                    edit_position.selectedItem.toString())
                 modifyData(user)
             } else {
                 Toast.makeText(this, "빠짐없이 입력해주세요", Toast.LENGTH_LONG).show()
             }
         }
+    }
+    private fun getIndex(spinner: Spinner, item:String):Int{
+        for(i in 0..spinner.count){
+            if(spinner.getItemAtPosition(i).toString().equals(item)){
+                return i;
+            }
+        }
+        return 0;
     }
     private fun modifyData(user: User) {
         val retrofitService = ServiceControl.getInstance()
