@@ -32,7 +32,7 @@ class ClubActivity : AppCompatActivity(){
             )
         }
         recyler_view.adapter = mAdapter
-        recyler_view.layoutManager = LinearLayoutManager(this)
+        recyler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun loadData() {
