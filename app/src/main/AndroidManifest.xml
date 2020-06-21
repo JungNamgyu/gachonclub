@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Account.ModifiedActivity"></activity>
-        <activity android:name=".HomeActivity" />
         <activity
             android:name=".Account.SignUpActivity"
             android:label="@string/title_activity_sign_up"
@@ -20,6 +19,7 @@
         <activity android:name=".Account.SignInActivity" />
         <activity android:name=".Club.ClubInfoActivity" />
         <activity android:name=".Club.ClubActivity" />
+        <activity android:name=".Club.ClubNotice" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
