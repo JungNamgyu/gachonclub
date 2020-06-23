@@ -5,4 +5,4 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
-data class Board(var _id:Long, var title:String, var content:String, var name:String, var data: Date) : Parcelable
+data class Board(var _id: Long?, var title:String, var content:String, var name:String, var data: Date?) : Parcelable

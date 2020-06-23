@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gachon_club.Club.Adapter.BoardRecyclerAdapter
 import com.example.gachon_club.Club.Model.Board
 import com.example.gachon_club.Network.ServiceControl
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_club_info.*
 import kotlinx.android.synthetic.main.fragment_notice.*
 import retrofit2.Call
@@ -31,9 +32,24 @@ class ClubInfoActivity : AppCompatActivity() {
         adapter.addFragment(CalendarFragment(), "일정")
         viewPager.adapter = adapter
         tab_layout.setupWithViewPager(viewPager)
-
+        tab_layout.addOnTabSelectedListener(object:TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(p0: TabLayout.Tab?) {}
+            override fun onTabUnselected(p0: TabLayout.Tab?) {}
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                if (tab == null)
+                    btn_notice_edit.hide()
+                else {
+                    if (tab.position == 0)
+                        btn_notice_edit.show()
+                    else
+                        btn_notice_edit.hide()
+                }
+            }
+        })
+        btn_notice_edit.setOnClickListener {
+            startActivity<EditNotice>()
+        }
         loadData()
-
     }
 
     class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager){
@@ -70,7 +86,6 @@ class ClubInfoActivity : AppCompatActivity() {
         board_recyler_view.layoutManager = LinearLayoutManager(this)
     }
 
-
     private fun loadData() {
         val retrofitService = ServiceControl.getInstance()
         retrofitService?.getAllBoards()?.enqueue(object: Callback<List<Board>> {
@@ -87,7 +102,4 @@ class ClubInfoActivity : AppCompatActivity() {
             }
         })
     }
-
-
-
 }

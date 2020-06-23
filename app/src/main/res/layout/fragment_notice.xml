@@ -13,15 +13,18 @@
         android:layout_height="match_parent"
         android:textSize="30sp"
         android:gravity="center" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:gravity="center_horizontal"
-        android:id="@+id/board_recyler_view"
-        android:layout_height="match_parent"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:nestedScrollingEnabled="false"
-        android:overScrollMode="never"
-        tools:listitem="@layout/list_notice_view"/>
-
-
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/board_recyler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never"
+            tools:listitem="@layout/list_notice_view" />
+    </ScrollView>
 
 </FrameLayout>

@@ -16,7 +16,9 @@ class ClubNotice : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice)
         val id = intent.getLongExtra("id", 0)
+
         loadData(id)
+
     }
     private fun loadData(id:Long) {
         val retrofitService = ServiceControl.getInstance()
