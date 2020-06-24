@@ -75,14 +75,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_name" />
 
-    <EditText
+    <Spinner
         android:id="@+id/edit_club"
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="club 입력하던가 ㅋ"
-        android:inputType="textPersonName"
+        android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_major" />

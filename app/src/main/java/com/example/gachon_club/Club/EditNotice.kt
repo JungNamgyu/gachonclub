@@ -25,6 +25,7 @@ class EditNotice : AppCompatActivity() {
             if((!TITLE.isNullOrBlank()) && (!CONTENT.isNullOrBlank()) && (!NAME.isNullOrBlank())){
                 val board = Board(
                     null,
+                    intent.getStringExtra("club"),
                     edit_title.text.toString(),
                     edit_contnent.text.toString(),
                     edit_notice_name.text.toString(),

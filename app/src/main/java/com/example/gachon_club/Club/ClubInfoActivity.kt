@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gachon_club.Club.Adapter.BoardRecyclerAdapter
 import com.example.gachon_club.Club.Model.Board
+import com.example.gachon_club.Club.Model.Club
 import com.example.gachon_club.Network.ServiceControl
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_club_info.*
@@ -46,10 +47,7 @@ class ClubInfoActivity : AppCompatActivity() {
                 }
             }
         })
-        btn_notice_edit.setOnClickListener {
-            startActivity<EditNotice>()
-        }
-        loadData()
+        loadClub(intent.getLongExtra("id", 0))
     }
 
     class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager){
@@ -85,10 +83,26 @@ class ClubInfoActivity : AppCompatActivity() {
         board_recyler_view.adapter = mAdapter
         board_recyler_view.layoutManager = LinearLayoutManager(this)
     }
-
-    private fun loadData() {
+    private fun loadClub(id: Long) {
         val retrofitService = ServiceControl.getInstance()
-        retrofitService?.getAllBoards()?.enqueue(object: Callback<List<Board>> {
+        retrofitService?.getClub(id)?.enqueue(object: Callback<Club> {
+            override fun onResponse(call: Call<Club>, response: Response<Club>) {
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    loadBoards(body!!.name)
+                    btn_notice_edit.setOnClickListener {
+                        startActivity<EditNotice>("club" to body?.name)
+                    }
+                }
+            }
+            override fun onFailure(call: Call<Club>, t: Throwable) {
+                Log.d("this is error",t.message)
+            }
+        })
+    }
+    private fun loadBoards(club: String) {
+        val retrofitService = ServiceControl.getInstance()
+        retrofitService?.getAllBoards(club)?.enqueue(object: Callback<List<Board>> {
             override fun onResponse(call: Call<List<Board>>, response: Response<List<Board>>) {
                 if (response.isSuccessful) {
                     val body = response.body()

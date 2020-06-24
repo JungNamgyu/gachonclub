@@ -43,12 +43,12 @@
         android:layout_marginEnd="30dp"
         android:background="@drawable/button_background"
         android:text="중앙동아리"
-        app:layout_constraintEnd_toStartOf="@+id/sub_club"
+        app:layout_constraintEnd_toStartOf="@+id/Sub_club"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gachon_logo" />
 
     <Button
-        android:id="@+id/sub_club"
+        android:id="@+id/Sub_club"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="130dp"
         android:layout_height="70dp"
@@ -87,7 +87,7 @@
         android:text="내 정보"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Notice"
-        app:layout_constraintTop_toBottomOf="@+id/sub_club" />
+        app:layout_constraintTop_toBottomOf="@+id/Sub_club" />
 
     <Button
         android:id="@+id/Sign_in"

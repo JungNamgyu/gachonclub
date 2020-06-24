@@ -32,8 +32,8 @@ interface WebServerService {
 
     ///////////////////////////////////////////////////////////////////
     // All Club
-    @GET("club/getAll")
-    fun getAllClubs(): Call<List<Club>>
+    @GET("club/getAll/{head}")
+    fun getAllClubs(@Path("head") head: String): Call<List<Club>>
 
     // Club
     @GET("club/get/{id}")
@@ -41,8 +41,8 @@ interface WebServerService {
 
     ///////////////////////////////////////////////////////////////////
     // All Board
-    @GET("board/getAll")
-    fun getAllBoards(): Call<List<Board>>
+    @GET("board/getAll/{club}")
+    fun getAllBoards(@Path("club") club: String): Call<List<Board>>
 
     // Board
     @GET("board/get/{id}")

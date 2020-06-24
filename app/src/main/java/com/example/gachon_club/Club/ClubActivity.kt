@@ -22,7 +22,7 @@ class ClubActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_club)
 
-        loadData()
+        loadData(intent.getStringExtra("head"))
     }
 
     private fun setAdapter(clubList: ArrayList<Club>){
@@ -35,9 +35,9 @@ class ClubActivity : AppCompatActivity(){
         recyler_view.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
     }
 
-    private fun loadData() {
+    private fun loadData(head: String) {
         val retrofitService = ServiceControl.getInstance()
-        retrofitService?.getAllClubs()?.enqueue(object: Callback<List<Club>> {
+        retrofitService?.getAllClubs(head)?.enqueue(object: Callback<List<Club>> {
             override fun onResponse(call: Call<List<Club>>, response: Response<List<Club>>) {
                 if (response.isSuccessful) {
                     val body = response.body()
