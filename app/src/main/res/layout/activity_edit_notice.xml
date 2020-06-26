@@ -35,12 +35,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar1" />
 
-    <TextView
-        android:id="@+id/text_notice_name"
+    <EditText
+        android:id="@+id/edit_notice_calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:ems="15"
+        android:hint="yyyymmdd"
+        android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_title" />
@@ -54,10 +56,10 @@
         android:ems="15"
         android:hint="내용"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_notice_name" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_notice_calendar" />
 
 
     <Button

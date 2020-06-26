@@ -20,8 +20,6 @@ class EditNotice : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_notice)
 
-        text_notice_name.text = intent.getStringExtra("user_name")
-
         btn_Register.setOnClickListener {
             val TITLE = edit_title.text.toString()
             val CONTENT = edit_contnent.text.toString()
@@ -33,7 +31,8 @@ class EditNotice : AppCompatActivity() {
                     edit_title.text.toString(),
                     edit_contnent.text.toString(),
                     intent.getStringExtra("user_name"),
-                    null
+                    null,
+                    edit_notice_calendar.text.toString()
                 )
                 addData(board)
             }else {
