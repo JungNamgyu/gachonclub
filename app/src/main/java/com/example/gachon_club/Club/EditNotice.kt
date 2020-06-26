@@ -10,6 +10,7 @@ import com.example.gachon_club.Club.Model.Board
 import com.example.gachon_club.Network.ServiceControl
 import com.example.gachon_club.R
 import kotlinx.android.synthetic.main.activity_edit_notice.*
+import kotlinx.android.synthetic.main.activity_notice.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,18 +20,19 @@ class EditNotice : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_notice)
 
+        text_notice_name.text = intent.getStringExtra("user_name")
+
         btn_Register.setOnClickListener {
             val TITLE = edit_title.text.toString()
             val CONTENT = edit_contnent.text.toString()
-            val NAME = edit_notice_name.text.toString()
 
-            if((!TITLE.isNullOrBlank()) && (!CONTENT.isNullOrBlank()) && (!NAME.isNullOrBlank())){
+            if((!TITLE.isNullOrBlank()) && (!CONTENT.isNullOrBlank())){
                 val board = Board(
                     null,
                     intent.getStringExtra("club"),
                     edit_title.text.toString(),
                     edit_contnent.text.toString(),
-                    edit_notice_name.text.toString(),
+                    intent.getStringExtra("user_name"),
                     null
                 )
                 addData(board)

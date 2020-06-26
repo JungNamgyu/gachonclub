@@ -11,6 +11,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gachon_club.Account.Model.User
 import com.example.gachon_club.Club.Adapter.BoardRecyclerAdapter
 import com.example.gachon_club.Club.Model.Board
 import com.example.gachon_club.Club.Model.Club
@@ -25,7 +26,7 @@ import retrofit2.Response
 class ClubInfoActivity : AppCompatActivity() {
 
     private var fragmentPagerAdapter: FragmentPagerAdapter? = null
-
+    var user:User ?= null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_club_info)
@@ -34,22 +35,31 @@ class ClubInfoActivity : AppCompatActivity() {
         adapter.addFragment(NoticeFragment(), "공지사항")
         adapter.addFragment(CalendarFragment(), "일정")
         viewPager.adapter = adapter
+        loadClub(intent.getLongExtra("id", 0))
         tab_layout.setupWithViewPager(viewPager)
+        user = intent.getParcelableExtra<User>("user")
         tab_layout.addOnTabSelectedListener(object:TabLayout.OnTabSelectedListener {
             override fun onTabReselected(p0: TabLayout.Tab?) {}
-            override fun onTabUnselected(p0: TabLayout.Tab?) {}
+            override fun onTabUnselected(p0: TabLayout.Tab?) {
+            }
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab == null)
                     btn_notice_edit.hide()
                 else {
-                    if (tab.position == 0)
-                        btn_notice_edit.show()
+                    if (tab.position == 0) {
+                        if(user != null)
+                            if (text_Title.text == user!!.club && user!!.position == "동아리 회장")
+                                btn_notice_edit.show()
+                            else
+                                btn_notice_edit.hide()
+                        else
+                            btn_notice_edit.hide()
+                    }
                     else
                         btn_notice_edit.hide()
                 }
             }
         })
-        loadClub(intent.getLongExtra("id", 0))
     }
 
     class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager){
@@ -80,6 +90,7 @@ class ClubInfoActivity : AppCompatActivity() {
         val mAdapter = BoardRecyclerAdapter(boardList,this) { it ->
             val intent = Intent(applicationContext, ClubNotice::class.java)
             intent.putExtra("id", it?._id)
+            intent.putExtra("user", user)
             startActivityForResult(intent, 100)
         }
         board_recyler_view.adapter = mAdapter
@@ -93,9 +104,17 @@ class ClubInfoActivity : AppCompatActivity() {
                     val body = response.body()
                     text_Title.text = body!!.name
                     loadBoards(body!!.name)
+                    if(user != null)
+                        if (body!!.name == user!!.club && user!!.position == "동아리 회장")
+                            btn_notice_edit.show()
+                        else
+                            btn_notice_edit.hide()
+                    else
+                        btn_notice_edit.hide()
                     btn_notice_edit.setOnClickListener {
                         val intent = Intent(applicationContext, EditNotice::class.java)
                         intent.putExtra("club", body?.name)
+                        intent.putExtra("user_name", user?.name)
                         startActivityForResult(intent, 100)
                     }
                 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gachon_club.Account.Model.User
 import com.example.gachon_club.Club.Adapter.RecyclerAdapter
 import com.example.gachon_club.Club.Model.Club
 import com.example.gachon_club.Network.ServiceControl
@@ -28,7 +29,8 @@ class ClubActivity : AppCompatActivity(){
     private fun setAdapter(clubList: ArrayList<Club>){
         val mAdapter = RecyclerAdapter(clubList,this) { club ->
             startActivity<ClubInfoActivity>(
-                "id" to club._id
+                "id" to club._id,
+                "user" to intent.getParcelableExtra<User>("user")
             )
         }
         recyler_view.adapter = mAdapter

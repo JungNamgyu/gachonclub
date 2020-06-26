@@ -25,6 +25,7 @@ class NoticeModify:AppCompatActivity() {
         edit_notice_name.setText(board.name)
         edit_contnent.setText(board.content)
 
+        edit_notice_name.text = intent.getStringExtra("club")
 
         btn_notice_modify.setOnClickListener{
 

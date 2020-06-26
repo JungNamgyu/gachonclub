@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.gachon_club.Account.Model.User
 import com.example.gachon_club.Club.Model.Board
 import com.example.gachon_club.Network.ServiceControl
 import com.example.gachon_club.R
+import kotlinx.android.synthetic.main.activity_edit_notice.*
 import kotlinx.android.synthetic.main.activity_notice.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,9 +24,7 @@ class ClubNotice : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice)
         val id = intent.getLongExtra("id", 0)
-
         loadData(id)
-
         btn_notice_delete.setOnClickListener {
             if(id != null){
                 val retrofitService = ServiceControl.getInstance()
@@ -49,6 +49,7 @@ class ClubNotice : AppCompatActivity() {
         btn_notice_configuration.setOnClickListener {
             val intent = Intent(this, NoticeModify::class.java)
             intent.putExtra("boardInfo", board)
+            intent.putExtra("club", text_name.text)
             startActivityForResult(intent, 100)
         }
 
@@ -61,6 +62,20 @@ class ClubNotice : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val body = response.body()
                     body?.let {
+                        val user = intent.getParcelableExtra<User>("user")
+                        if(user != null)
+                            if (body.name == user!!.name && user!!.position == "동아리 회장") {
+                                btn_notice_configuration.show()
+                                btn_notice_delete.show()
+                            }
+                            else {
+                                btn_notice_configuration.hide()
+                                btn_notice_delete.hide()
+                            }
+                        else {
+                            btn_notice_configuration.hide()
+                            btn_notice_delete.hide()
+                        }
                         board = body
                         text_Title.text = body.title
                         text_name.text = body.name
