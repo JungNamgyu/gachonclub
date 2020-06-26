@@ -18,6 +18,7 @@ import com.example.gachon_club.Club.Model.Club
 import com.example.gachon_club.Network.ServiceControl
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_club_info.*
+import kotlinx.android.synthetic.main.fragment_calendar.*
 import kotlinx.android.synthetic.main.fragment_notice.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -93,8 +94,15 @@ class ClubInfoActivity : AppCompatActivity() {
             intent.putExtra("user", user)
             startActivityForResult(intent, 100)
         }
-        board_recyler_view.adapter = mAdapter
-        board_recyler_view.layoutManager = LinearLayoutManager(this)
+        val manager = LinearLayoutManager(this)
+        manager.reverseLayout = true
+        manager.stackFromEnd = true
+
+        board_recycler_view.adapter = mAdapter
+        board_recycler_view.layoutManager = manager
+
+        calendar_recycler_view.adapter = mAdapter
+        calendar_recycler_view.layoutManager = LinearLayoutManager(this)
     }
     private fun loadClub(id: Long) {
         val retrofitService = ServiceControl.getInstance()

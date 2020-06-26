@@ -15,24 +15,24 @@
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
-    <TextView
-        android:layout_marginTop="400dp"
-        android:text="일정 : "
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="280dp"
+        android:layout_marginTop="350dp">
 
-    <TextView
-        android:id="@+id/todo_text"
-        android:layout_marginTop="400dp"
-        android:layout_marginLeft="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="~내용~"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/calendar_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never"
+            tools:listitem="@layout/list_notice_view" />
+    </ScrollView>
 
 
 </FrameLayout>
