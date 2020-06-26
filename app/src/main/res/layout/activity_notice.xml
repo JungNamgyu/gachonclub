@@ -52,7 +52,6 @@
             android:layout_marginTop="28dp"
             android:layout_marginBottom="28dp"
             android:ems="15"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
