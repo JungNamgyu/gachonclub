@@ -41,7 +41,8 @@ class NoticeModify:AppCompatActivity() {
                     edit_title.text.toString(),
                     edit_contnent.text.toString(),
                     intent.getStringExtra("club"),
-                    null
+                    null,
+                    edit_notice_calendar.text.toString()
                 )
                 modifyData(board1)
                 finish()
