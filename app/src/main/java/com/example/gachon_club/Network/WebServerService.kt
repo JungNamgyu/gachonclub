@@ -46,7 +46,7 @@ interface WebServerService {
 
     // All Board_Calendar
     @GET("board/getAll/{club}/{calendar}")
-    fun getAllBoards(@Path("club") club: String, @Path("calendar") calendar: String): Call<List<Board>>
+    fun getAllCalendarBoards(@Path("club") club: String, @Path("calendar") calendar: String): Call<List<Board>>
 
     // Board
     @GET("board/get/{id}")
