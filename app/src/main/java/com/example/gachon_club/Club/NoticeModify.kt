@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.activity_modify_notice.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class NoticeModify:AppCompatActivity() {
 
@@ -22,24 +24,23 @@ class NoticeModify:AppCompatActivity() {
         val board:Board = intent.getParcelableExtra<Board>("boardInfo")
 
         edit_title.setText(board.title)
-        edit_notice_name.setText(board.name)
+        edit_notice_calendar.setText(board.name)
         edit_contnent.setText(board.content)
 
-        edit_notice_name.text = intent.getStringExtra("club")
 
         btn_notice_modify.setOnClickListener{
 
             val TITLE = edit_title.text.toString()
             val CONTENT = edit_contnent.text.toString()
-            val NAME = edit_notice_name.text.toString()
+            val CALENDAR = edit_notice_calendar.text.toString()
 
-            if((!TITLE.isNullOrBlank()) && (!CONTENT.isNullOrBlank()) && (!NAME.isNullOrBlank())){
+            if((!TITLE.isNullOrBlank()) && (!CONTENT.isNullOrBlank()) && (!CALENDAR.isNullOrBlank())){
                 val board1 = Board(
                     board._id,
                     board.club,
                     edit_title.text.toString(),
                     edit_contnent.text.toString(),
-                    edit_notice_name.text.toString(),
+                    intent.getStringExtra("club"),
                     null
                 )
                 modifyData(board1)
