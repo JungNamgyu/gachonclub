@@ -36,6 +36,7 @@ class ClubActivity : AppCompatActivity(){
     }
 
     private fun loadData(head: String) {
+        text_Title.text = head
         val retrofitService = ServiceControl.getInstance()
         retrofitService?.getAllClubs(head)?.enqueue(object: Callback<List<Club>> {
             override fun onResponse(call: Call<List<Club>>, response: Response<List<Club>>) {

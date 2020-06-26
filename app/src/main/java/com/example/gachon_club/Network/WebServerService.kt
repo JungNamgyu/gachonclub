@@ -54,9 +54,9 @@ interface WebServerService {
 
     // Board edit
     @PUT("board/edit")
-    fun modifyBoard(@Body body:User): Call<Board>
+    fun modifyBoard(@Body body:Board): Call<Board>
 
     // Board Delete
     @DELETE("board/delete/{id}")
-    fun deleteBoard(@Path("id")id: String): Call<Boolean>
+    fun deleteBoard(@Path("id")id: Long): Call<Boolean>
 }

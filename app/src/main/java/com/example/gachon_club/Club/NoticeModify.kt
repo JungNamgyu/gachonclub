@@ -1,4 +1,3 @@
-
 package com.example.gachon_club.Club
 
 import android.app.Activity
@@ -9,51 +8,69 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.gachon_club.Club.Model.Board
 import com.example.gachon_club.Network.ServiceControl
 import com.example.gachon_club.R
-import kotlinx.android.synthetic.main.activity_edit_notice.*
+import kotlinx.android.synthetic.main.activity_modify_notice.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class EditNotice : AppCompatActivity() {
+class NoticeModify:AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_notice)
+        setContentView(R.layout.activity_modify_notice)
 
-        btn_Register.setOnClickListener {
+        val board:Board = intent.getParcelableExtra<Board>("boardInfo")
+
+        edit_title.setText(board.title)
+        edit_notice_name.setText(board.name)
+        edit_contnent.setText(board.content)
+
+
+        btn_notice_modify.setOnClickListener{
+
             val TITLE = edit_title.text.toString()
             val CONTENT = edit_contnent.text.toString()
             val NAME = edit_notice_name.text.toString()
 
             if((!TITLE.isNullOrBlank()) && (!CONTENT.isNullOrBlank()) && (!NAME.isNullOrBlank())){
-                val board = Board(
-                    null,
-                    intent.getStringExtra("club"),
+                val board1 = Board(
+                    board._id,
+                    board.club,
                     edit_title.text.toString(),
                     edit_contnent.text.toString(),
                     edit_notice_name.text.toString(),
                     null
                 )
-                addData(board)
-            }else {
+                modifyData(board1)
+                finish()
+            }
+            else {
                 Toast.makeText(this, "빠짐없이 입력해주세요", Toast.LENGTH_LONG).show()
             }
         }
     }
 
-    private fun addData(board: Board) {
+    private fun modifyData(board: Board) {
         val retrofitService = ServiceControl.getInstance()
-        retrofitService?.addBoard(board)?.enqueue(object: Callback<Board> {
+        retrofitService?.modifyBoard(board)?.enqueue(object: Callback<Board> {
             override fun onResponse(call: Call<Board>, response: Response<Board>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(applicationContext, "공지사항 등록 성공", Toast.LENGTH_LONG).show()
-                    val intent = Intent()
-                    setResult(Activity.RESULT_OK, intent)
-                    finish()
+                    val body = response.body()
+                    body?.let {
+                        Toast.makeText(applicationContext, "공지사항 수정 완료", Toast.LENGTH_LONG).show()
+                        val intent = Intent()
+                        intent.putExtra("boardInfo", it)
+                        setResult(Activity.RESULT_OK, intent)
+                        finish()
+                    }
                 }
+
             }
             override fun onFailure(call: Call<Board>, t: Throwable) {
-                Toast.makeText(applicationContext, "실패", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "공지사항 수정 실패", Toast.LENGTH_LONG).show()
             }
         })
     }
+
+
 }

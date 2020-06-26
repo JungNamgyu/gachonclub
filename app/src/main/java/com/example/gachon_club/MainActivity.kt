@@ -41,11 +41,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView.setNavigationItemSelectedListener(this)
 
         Main_club.setOnClickListener{
-            startActivity<ClubActivity>("head" to "중앙동아리")
+            startActivity<ClubActivity>(
+                "head" to "중앙동아리",
+                "user" to user)
         }
 
         Sub_club.setOnClickListener{
-            startActivity<ClubActivity>("head" to "과동아리")
+            startActivity<ClubActivity>(
+                "head" to "과동아리",
+                "user" to user)
         }
 
         Information.setOnClickListener{

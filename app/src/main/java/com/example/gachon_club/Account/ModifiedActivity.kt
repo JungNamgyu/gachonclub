@@ -47,15 +47,13 @@ class ModifiedActivity : AppCompatActivity() {
 
             if(user.userPw == PW) {
                 if ((!NAME.isNullOrBlank()) && (!MAJOR.isNullOrBlank()) && (CLUB != "선택") && (!POSITION.isNullOrBlank())) {
-                    val user = User(
+                    modifyData(User(
                         edit_username.text.toString(),
                         edit_password.text.toString(),
                         edit_name.text.toString(),
                         edit_major.text.toString(),
                         edit_club.selectedItem.toString(),
-                        edit_position.selectedItem.toString()
-                    )
-                    modifyData(user)
+                        edit_position.selectedItem.toString()))
                 } else {
                     Toast.makeText(this, "빠짐없이 입력해주세요", Toast.LENGTH_LONG).show()
                 }

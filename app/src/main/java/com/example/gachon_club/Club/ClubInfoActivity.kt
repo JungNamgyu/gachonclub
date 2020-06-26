@@ -1,5 +1,7 @@
 package com.example.gachon_club.Club
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentPagerAdapter
@@ -76,9 +78,9 @@ class ClubInfoActivity : AppCompatActivity() {
 
     private fun setAdapter(boardList: ArrayList<Board>){
         val mAdapter = BoardRecyclerAdapter(boardList,this) { it ->
-            startActivity<ClubNotice>(
-                "id" to it._id
-            )
+            val intent = Intent(applicationContext, ClubNotice::class.java)
+            intent.putExtra("id", it?._id)
+            startActivityForResult(intent, 100)
         }
         board_recyler_view.adapter = mAdapter
         board_recyler_view.layoutManager = LinearLayoutManager(this)
@@ -89,9 +91,12 @@ class ClubInfoActivity : AppCompatActivity() {
             override fun onResponse(call: Call<Club>, response: Response<Club>) {
                 if (response.isSuccessful) {
                     val body = response.body()
+                    text_Title.text = body!!.name
                     loadBoards(body!!.name)
                     btn_notice_edit.setOnClickListener {
-                        startActivity<EditNotice>("club" to body?.name)
+                        val intent = Intent(applicationContext, EditNotice::class.java)
+                        intent.putExtra("club", body?.name)
+                        startActivityForResult(intent, 100)
                     }
                 }
             }
@@ -115,5 +120,15 @@ class ClubInfoActivity : AppCompatActivity() {
                 Log.d("this is error",t.message)
             }
         })
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                100 -> {
+                    loadClub(intent.getLongExtra("id", 0))
+                }
+            }
+        }
     }
 }

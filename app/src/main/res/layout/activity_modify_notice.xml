@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="공지사항 추가"
+            android:text="공지사항 수정"
             android:textSize="20sp" />
     </androidx.appcompat.widget.Toolbar>
 
@@ -55,20 +55,20 @@
         android:layout_marginBottom="28dp"
         android:ems="15"
         android:hint="내용"
-        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_notice_name" />
 
-
     <Button
-        android:id="@+id/btn_Register"
+        android:id="@+id/btn_notice_modify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Register"
+        android:layout_marginBottom="24dp"
+        android:text="Modify"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
