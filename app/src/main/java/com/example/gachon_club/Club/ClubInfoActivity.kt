@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gachon_club.Account.Model.User
 import com.example.gachon_club.Club.Adapter.BoardRecyclerAdapter
+import com.example.gachon_club.Club.Adapter.NoticeRecyclerAdapter
 import com.example.gachon_club.Club.Model.Board
 import com.example.gachon_club.Club.Model.Club
 import com.example.gachon_club.Network.ServiceControl
@@ -94,6 +95,14 @@ class ClubInfoActivity : AppCompatActivity() {
             intent.putExtra("user", user)
             startActivityForResult(intent, 100)
         }
+
+        val bAdapter = NoticeRecyclerAdapter(boardList,this) { it ->
+            val intent = Intent(applicationContext, ClubNotice::class.java)
+            intent.putExtra("id", it?._id)
+            intent.putExtra("user", user)
+            startActivityForResult(intent, 100)
+        }
+
         val manager = LinearLayoutManager(this)
         manager.reverseLayout = true
         manager.stackFromEnd = true
@@ -101,9 +110,10 @@ class ClubInfoActivity : AppCompatActivity() {
         board_recycler_view.adapter = mAdapter
         board_recycler_view.layoutManager = manager
 
-        calendar_recycler_view.adapter = mAdapter
+        calendar_recycler_view.adapter = bAdapter
         calendar_recycler_view.layoutManager = LinearLayoutManager(this)
     }
+
     private fun loadClub(id: Long) {
         val retrofitService = ServiceControl.getInstance()
         retrofitService?.getClub(id)?.enqueue(object: Callback<Club> {

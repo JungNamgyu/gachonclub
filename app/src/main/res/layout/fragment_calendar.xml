@@ -31,7 +31,7 @@
             android:gravity="center_horizontal"
             android:nestedScrollingEnabled="false"
             android:overScrollMode="never"
-            tools:listitem="@layout/list_notice_view" />
+            tools:listitem="@layout/list_calendar_view" />
     </ScrollView>
 
 
