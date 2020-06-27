@@ -73,7 +73,7 @@ class ClubInfoActivity : AppCompatActivity() {
                     }
                     else{
                         calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
-                            text_Calendar.text = (""+year+"년 "+0+(month+1)+"월 일정")
+                            text_Calendar.text = (""+year+"년 "+(month+1)+"월 일정")
                         }
                         btn_notice_edit.hide()
                     }
