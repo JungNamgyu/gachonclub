@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gachon_club.Club.Model.Board
 import com.example.gachon_club.R
 
-class NoticeRecyclerAdapter (private var boardList: ArrayList<Board>, var context: Context, var itemClick: (Board) -> Unit)
-    : RecyclerView.Adapter<NoticeRecyclerAdapter.ViewHolder>(){
+class CalendarRecyclerAdapter (private var boardList: ArrayList<Board>, var context: Context, var itemClick: (Board) -> Unit)
+    : RecyclerView.Adapter<CalendarRecyclerAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(context)
@@ -29,11 +29,11 @@ class NoticeRecyclerAdapter (private var boardList: ArrayList<Board>, var contex
     inner class ViewHolder (itemView: View?, itemClick: (Board) -> Unit) : RecyclerView.ViewHolder(itemView!!){
 
         val title = itemView?.findViewById<TextView>(R.id.text_BoardTitle)
-        val clendar = itemView?.findViewById<TextView>(R.id.text_BoardCalendar)
+        val calendar = itemView?.findViewById<TextView>(R.id.text_BoardCalendar)
 
         fun bind(itemBoard: Board?, context: Context){
             title?.text = itemBoard?.title
-            clendar?.text = itemBoard?.calendar
+            calendar?.text = itemBoard?.calendar
             itemView.setOnClickListener { itemClick(itemBoard!!) }
         }
 
