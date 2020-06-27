@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Club.NoticeModify"></activity>
+        <activity android:name=".Club.MainNotice"></activity>
+        <activity android:name=".Club.NoticeModify" />
         <activity android:name=".Club.EditNotice" />
         <activity android:name=".Account.ModifiedActivity" />
         <activity

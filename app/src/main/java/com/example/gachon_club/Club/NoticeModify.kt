@@ -62,7 +62,7 @@ class NoticeModify:AppCompatActivity() {
                     body?.let {
                         Toast.makeText(applicationContext, "공지사항 수정 완료", Toast.LENGTH_LONG).show()
                         val intent = Intent()
-                        intent.putExtra("boardInfo", it)
+                        intent.putExtra("board", it)
                         setResult(Activity.RESULT_OK, intent)
                         finish()
                     }

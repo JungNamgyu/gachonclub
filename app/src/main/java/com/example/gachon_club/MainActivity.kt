@@ -16,6 +16,7 @@ import com.example.gachon_club.Account.ModifiedActivity
 import com.example.gachon_club.Account.SignInActivity
 import com.example.gachon_club.Account.SignUpActivity
 import com.example.gachon_club.Club.ClubActivity
+import com.example.gachon_club.Club.MainNotice
 import com.example.gachon_club.Network.ServiceControl
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -50,6 +51,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity<ClubActivity>(
                 "head" to "과동아리",
                 "user" to user)
+        }
+
+        Notice.setOnClickListener{
+            startActivity<MainNotice>()
         }
 
         Information.setOnClickListener{

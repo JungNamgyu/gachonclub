@@ -45,16 +45,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_Title" />
 
-        <TextView
-            android:id="@+id/text_Boardcontent"
+        <ScrollView
             android:layout_width="315dp"
             android:layout_height="0dp"
             android:layout_marginTop="28dp"
             android:layout_marginBottom="28dp"
-            android:ems="15"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_name" />
+            app:layout_constraintTop_toBottomOf="@+id/text_name">
+            <TextView
+                android:id="@+id/text_Boardcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="15"/>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
