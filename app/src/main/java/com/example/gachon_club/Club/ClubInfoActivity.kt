@@ -73,6 +73,7 @@ class ClubInfoActivity : AppCompatActivity() {
                     }
                     else{
                         calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
+                            val msg:String = "$year/$month"
                             text_Calendar.text = (""+year+"년 "+(month+1)+"월 일정")
                         }
                         btn_notice_edit.hide()
