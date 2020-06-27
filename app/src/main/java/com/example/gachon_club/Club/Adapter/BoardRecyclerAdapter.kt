@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gachon_club.Club.Adapter.BoardRecyclerAdapter.ViewHolder
 import com.example.gachon_club.Club.Model.Board
 import com.example.gachon_club.R
+import java.util.logging.Filter
 
 class BoardRecyclerAdapter(private var boardList: ArrayList<Board>, var context: Context, var itemClick: (Board) -> Unit)
     : RecyclerView.Adapter<ViewHolder>(){
@@ -26,6 +27,8 @@ class BoardRecyclerAdapter(private var boardList: ArrayList<Board>, var context:
         holder.bind(boardList[position], context)
 
     }
+
+
 
     inner class ViewHolder (itemView: View?, itemClick: (Board) -> Unit) : RecyclerView.ViewHolder(itemView!!){
 

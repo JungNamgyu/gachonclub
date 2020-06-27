@@ -30,6 +30,7 @@ class ClubInfoActivity : AppCompatActivity() {
     private var fragmentPagerAdapter: FragmentPagerAdapter? = null
 
     var user:User ?= null
+    var msg:CharSequence ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,13 +68,17 @@ class ClubInfoActivity : AppCompatActivity() {
                     }
                     else{
                         calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
-                            val msg:String = "$year/$month"
-                            text_Calendar.text = (""+year+"년 "+(month+1)+"월 일정")
+                            if(month < 9){
+                                text_Calendar.text = (""+year+"년 "+ "0" + (month+1)+"월 일정")
+                                msg = (year + 0 + (month+1)).toString()
+                            }
+                            else{
+                                text_Calendar.text = (""+year+"년 "+(month+1)+"월 일정")
+                                msg = (year + (month+1)).toString()
+                            }
                         }
                         btn_notice_edit.hide()
                     }
-
-
                 }
             }
         })
@@ -112,10 +117,13 @@ class ClubInfoActivity : AppCompatActivity() {
         }
 
         val bAdapter = CalendarRecyclerAdapter(boardList,this) { it ->
-            val intent = Intent(applicationContext, ClubNotice::class.java)
-            intent.putExtra("id", it?._id)
-            intent.putExtra("user", user)
-            startActivityForResult(intent, 100)
+            if(it.calendar!!.contains("msg")){
+                val intent = Intent(applicationContext, ClubNotice::class.java)
+                intent.putExtra("id", it?._id)
+                intent.putExtra("user", user)
+                startActivityForResult(intent, 100)
+            }
+
         }
 
         val manager = LinearLayoutManager(this)
