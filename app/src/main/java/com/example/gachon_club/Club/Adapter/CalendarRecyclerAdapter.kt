@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gachon_club.Club.Model.Board
 import com.example.gachon_club.R
 
-class NoticeRecyclerAdapter (private var boardList: ArrayList<Board>, var context: Context, var itemClick: (Board) -> Unit)
-    : RecyclerView.Adapter<NoticeRecyclerAdapter.ViewHolder>(){
+class CalendarRecyclerAdapter (private var boardList: ArrayList<Board>, var context: Context, var itemClick: (Board) -> Unit)
+    : RecyclerView.Adapter<CalendarRecyclerAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(context)

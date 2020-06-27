@@ -1,23 +1,18 @@
 package com.example.gachon_club.Club
 
 import android.app.Activity
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentPagerAdapter
-import org.jetbrains.anko.startActivity
 import com.example.gachon_club.R
 import android.util.Log
-import android.widget.CalendarView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gachon_club.Account.Model.User
 import com.example.gachon_club.Club.Adapter.BoardRecyclerAdapter
-import com.example.gachon_club.Club.Adapter.NoticeRecyclerAdapter
+import com.example.gachon_club.Club.Adapter.CalendarRecyclerAdapter
 import com.example.gachon_club.Club.Model.Board
 import com.example.gachon_club.Club.Model.Club
 import com.example.gachon_club.Network.ServiceControl
@@ -28,7 +23,6 @@ import kotlinx.android.synthetic.main.fragment_notice.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 import kotlin.collections.ArrayList
 
 class ClubInfoActivity : AppCompatActivity() {
@@ -117,7 +111,7 @@ class ClubInfoActivity : AppCompatActivity() {
             startActivityForResult(intent, 100)
         }
 
-        val bAdapter = NoticeRecyclerAdapter(boardList,this) { it ->
+        val bAdapter = CalendarRecyclerAdapter(boardList,this) { it ->
             val intent = Intent(applicationContext, ClubNotice::class.java)
             intent.putExtra("id", it?._id)
             intent.putExtra("user", user)
