@@ -20,9 +20,10 @@
         android:layout_weight="1" />
 
     <TextView
+        android:hint="월별 일정"
         android:layout_width="match_parent"
         android:layout_height="29dp"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="310dp"
         android:gravity="center"
         android:id="@+id/text_Calendar"
         android:textSize="18sp"

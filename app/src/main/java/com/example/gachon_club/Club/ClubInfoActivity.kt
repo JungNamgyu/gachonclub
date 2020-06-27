@@ -36,7 +36,6 @@ class ClubInfoActivity : AppCompatActivity() {
     private var fragmentPagerAdapter: FragmentPagerAdapter? = null
 
     var user:User ?= null
-    val calendar: Calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,9 +46,7 @@ class ClubInfoActivity : AppCompatActivity() {
         adapter.addFragment(CalendarFragment(), "일정")
         viewPager.adapter = adapter
 
-        calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            text_Calendar.text = "" + year + "년 " + month + "월 일정"
-        }
+
 
         loadClub(intent.getLongExtra("id", 0))
 
@@ -74,8 +71,14 @@ class ClubInfoActivity : AppCompatActivity() {
                         else
                             btn_notice_edit.hide()
                     }
-                    else
+                    else{
+                        calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
+                            text_Calendar.text = (""+year+"년 "+0+(month+1)+"월 일정")
+                        }
                         btn_notice_edit.hide()
+                    }
+
+
                 }
             }
         })
