@@ -27,7 +27,7 @@ class SignUpActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
-        loadData("중앙동아리")
+        loadData(arrayListOf("중앙동아리", "과동아리"))
         edit_club.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list_of_club)
         edit_position.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list_of_position)
 
@@ -54,22 +54,25 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
-    private fun loadData(head: String) {
-        val retrofitService = ServiceControl.getInstance()
-        retrofitService?.getAllClubs(head)?.enqueue(object: Callback<List<Club>> {
-            override fun onResponse(call: Call<List<Club>>, response: Response<List<Club>>) {
-                if (response.isSuccessful) {
-                    val body = response.body()
-                    body?.let {
-                        for(i in body){
-                            list_of_club.add(i.name)
+    private fun loadData(head: ArrayList<String>) {
+        for (i in head) {
+            val retrofitService = ServiceControl.getInstance()
+            retrofitService?.getAllClubs(i)?.enqueue(object : Callback<List<Club>> {
+                override fun onResponse(call: Call<List<Club>>, response: Response<List<Club>>) {
+                    if (response.isSuccessful) {
+                        val body = response.body()
+                        body?.let {
+                            for (i in body) {
+                                list_of_club.add(i.name)
+                            }
                         }
                     }
                 }
-            }
-            override fun onFailure(call: Call<List<Club>>, t: Throwable) {
-            }
-        })
+
+                override fun onFailure(call: Call<List<Club>>, t: Throwable) {
+                }
+            })
+        }
     }
 
     private fun addData(user:User) {
