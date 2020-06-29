@@ -31,6 +31,7 @@ class ClubInfoActivity : AppCompatActivity() {
 
     var user:User ?= null
     var msg:CharSequence ?= null
+    var Bbody:Club ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,12 +72,12 @@ class ClubInfoActivity : AppCompatActivity() {
                             if(month < 9){
                                 text_Calendar.text = (""+year+"년 "+ "0" + (month+1)+"월 일정")
                                 msg = (year + 0 + (month+1)).toString()
-                                loadCalendars("club", msg as String)
+                                loadCalendars(Bbody!!.name, msg as String)
                             }
                             else{
                                 text_Calendar.text = (""+year+"년 "+(month+1)+"월 일정")
                                 msg = (year + (month+1)).toString()
-                                loadCalendars("club", msg as String)
+                                loadCalendars(Bbody!!.name, msg as String)
                             }
                         }
                         btn_notice_edit.hide()
@@ -118,20 +119,22 @@ class ClubInfoActivity : AppCompatActivity() {
             startActivityForResult(intent, 100)
         }
 
-        val bAdapter = CalendarRecyclerAdapter(boardList,this) { it ->
-            val intent = Intent(applicationContext, ClubNotice::class.java)
-            intent.putExtra("id", it?._id)
-            intent.putExtra("user", user)
-            startActivityForResult(intent, 100)
-
-        }
-
         val manager = LinearLayoutManager(this)
         manager.reverseLayout = true
         manager.stackFromEnd = true
 
         board_recycler_view.adapter = mAdapter
         board_recycler_view.layoutManager = manager
+
+    }
+
+    private fun bsetAdapter(boardList: ArrayList<Board>){
+        val bAdapter = CalendarRecyclerAdapter(boardList,this) { it ->
+            val intent = Intent(applicationContext, ClubNotice::class.java)
+            intent.putExtra("id", it?._id)
+            intent.putExtra("user", user)
+            startActivityForResult(intent, 100)
+        }
 
         calendar_recycler_view.adapter = bAdapter
         calendar_recycler_view.layoutManager = LinearLayoutManager(this)
@@ -143,6 +146,7 @@ class ClubInfoActivity : AppCompatActivity() {
             override fun onResponse(call: Call<Club>, response: Response<Club>) {
                 if (response.isSuccessful) {
                     val body = response.body()
+                    Bbody = response.body()
                     text_Title.text = body!!.name
                     loadBoards(body!!.name)
                     if(user != null)
@@ -191,7 +195,7 @@ class ClubInfoActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val body = response.body()
                     body?.let {
-                        setAdapter(it as ArrayList<Board>)
+                        bsetAdapter(it as ArrayList<Board>)
                     }
                 }
             }
