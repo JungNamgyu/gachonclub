@@ -71,10 +71,12 @@ class ClubInfoActivity : AppCompatActivity() {
                             if(month < 9){
                                 text_Calendar.text = (""+year+"년 "+ "0" + (month+1)+"월 일정")
                                 msg = (year + 0 + (month+1)).toString()
+                                loadCalendars("club", msg as String)
                             }
                             else{
                                 text_Calendar.text = (""+year+"년 "+(month+1)+"월 일정")
                                 msg = (year + (month+1)).toString()
+                                loadCalendars("club", msg as String)
                             }
                         }
                         btn_notice_edit.hide()
@@ -117,12 +119,10 @@ class ClubInfoActivity : AppCompatActivity() {
         }
 
         val bAdapter = CalendarRecyclerAdapter(boardList,this) { it ->
-            if(it.calendar!!.contains("msg")){
-                val intent = Intent(applicationContext, ClubNotice::class.java)
-                intent.putExtra("id", it?._id)
-                intent.putExtra("user", user)
-                startActivityForResult(intent, 100)
-            }
+            val intent = Intent(applicationContext, ClubNotice::class.java)
+            intent.putExtra("id", it?._id)
+            intent.putExtra("user", user)
+            startActivityForResult(intent, 100)
 
         }
 
@@ -165,6 +165,7 @@ class ClubInfoActivity : AppCompatActivity() {
             }
         })
     }
+
     private fun loadBoards(club: String) {
         val retrofitService = ServiceControl.getInstance()
         retrofitService?.getAllBoards(club)?.enqueue(object: Callback<List<Board>> {
@@ -181,6 +182,25 @@ class ClubInfoActivity : AppCompatActivity() {
             }
         })
     }
+
+
+    private fun loadCalendars(club: String, date: String) {
+        val retrofitService = ServiceControl.getInstance()
+        retrofitService?.getAllCalendarBoards(club, date)?.enqueue(object: Callback<List<Board>> {
+            override fun onResponse(call: Call<List<Board>>, response: Response<List<Board>>) {
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    body?.let {
+                        setAdapter(it as ArrayList<Board>)
+                    }
+                }
+            }
+            override fun onFailure(call: Call<List<Board>>, t: Throwable) {
+                Log.d("this is error",t.message)
+            }
+        })
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK) {
