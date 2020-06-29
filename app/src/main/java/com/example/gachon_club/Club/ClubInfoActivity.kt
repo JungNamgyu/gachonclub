@@ -71,12 +71,12 @@ class ClubInfoActivity : AppCompatActivity() {
                         calendarView?.setOnDateChangeListener { view, year, month, dayOfMonth ->
                             if(month < 9){
                                 text_Calendar.text = (""+year+"년 "+ "0" + (month+1)+"월 일정")
-                                msg = (year + 0 + (month+1)).toString()
+                                msg = (year.toString() + "0" + (month+1).toString())
                                 loadCalendars(Bbody!!.name, msg as String)
                             }
                             else{
                                 text_Calendar.text = (""+year+"년 "+(month+1)+"월 일정")
-                                msg = (year + (month+1)).toString()
+                                msg = (year.toString() + (month+1).toString())
                                 loadCalendars(Bbody!!.name, msg as String)
                             }
                         }
