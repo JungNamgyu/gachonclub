@@ -16,8 +16,8 @@ import retrofit2.Response
 
 class SignUpActivity : AppCompatActivity() {
 
-    var list_of_club = arrayListOf<String>("선택")
-    var list_of_position = arrayOf("동아리 회장", "동아리 부회장", "동아리 부윈")
+    var list_of_club = arrayListOf<String>("미가입")
+    var list_of_position = arrayOf("일반 학생", "동아리 회장", "동아리 부회장", "동아리 부윈")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
