@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Club.ClubActivity"
-    android:background="#50BCDF">
+    android:background="@drawable/gradient">
 
     <TextView
         style="@style/CustomTabSetting"

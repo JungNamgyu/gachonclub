@@ -10,15 +10,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/FullScreenTheme">
         <activity android:name=".Club.MainNotice"></activity>
         <activity android:name=".Club.NoticeModify" />
         <activity android:name=".Club.EditNotice" />
         <activity android:name=".Account.ModifiedActivity" />
-        <activity
-            android:name=".Account.SignUpActivity"
-            android:label="@string/title_activity_sign_up"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Account.SignUpActivity" />
         <activity android:name=".Account.SignInActivity" />
         <activity android:name=".Club.ClubInfoActivity" />
         <activity android:name=".Club.ClubActivity" />
